@@ -54,14 +54,15 @@ public class DraggableObject : MonoBehaviour
         if (isDragging)
         {
             // Обновляем позицию объекта в зависимости от позиции мыши
-            Vector2 look = context.ReadValue<Vector2>();
-            print($"ContinueDrag look={look} context={context}");
+            //Vector2 look = context.ReadValue<Vector2>();
+            //print($"ContinueDrag look={look} context={context} mouse={Mouse.current.position.ReadValue()}");
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            //Vector3 newPosition = mousePos + initialOffset;
-            Vector3 newPosition = transform.position;
-            look *= Time.deltaTime * moveSpeed;
+            print($"ContinueDrag mouse={Mouse.current.position.ReadValue()}  mouseWorld={mousePos}");
+            Vector3 newPosition = mousePos + initialOffset;
+            //Vector3 newPosition = transform.position;
+            /*look *= Time.deltaTime * moveSpeed;
             newPosition.x += look.x;
-            newPosition.y += look.y * 2;
+            newPosition.y += look.y * 2;*/
             //print($"isDragging => mousePos={mousePos}   pos={transform.position}  newPos={newPosition}  initialOffset={initialOffset}");
             transform.position = newPosition;
         }
